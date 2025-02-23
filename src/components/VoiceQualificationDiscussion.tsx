@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff, Volume2 } from "lucide-react";
 import { useConversation } from "@11labs/react";
@@ -118,7 +117,7 @@ export function VoiceQualificationDiscussion({ results }: VoiceQualificationDisc
     try {
       console.log("Attempting to start session...");
       await conversation.startSession({
-        agentId: "tHdevlgucdu7DHHmRaUO" // Make sure this matches your agent ID
+        agentId: "5V3UCGiQ1CiIhAzzGM5h" // Updated agent ID
       });
       console.log("Session started successfully");
     } catch (error: any) {
