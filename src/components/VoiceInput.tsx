@@ -44,6 +44,12 @@ export function VoiceInput({ onFieldUpdate }: VoiceInputProps) {
             description: "There was a network issue while trying to access speech recognition. Please check your internet connection.",
             variant: "destructive",
           });
+        } else if (event.error === 'no-speech') {
+          toast({
+            title: "No Speech Detected",
+            description: "Please try speaking again.",
+            variant: "destructive",
+          });
         } else {
           toast({
             title: "Speech Recognition Error",
