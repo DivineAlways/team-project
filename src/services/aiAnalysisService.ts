@@ -46,17 +46,26 @@ export async function analyzeBusinessLead(data: BusinessFormData) {
       "recommendations": ["rec1", "rec2", "rec3"]
     }`;
 
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  const text = response.text();
-  
   try {
-    return JSON.parse(text);
-  } catch (e) {
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
+    const result = await model.generateContent(prompt, {
+      headers: {
+        'Authorization': `Bearer ${apiKey}`
+      }
+    });
+    const response = await result.response;
+    const text = response.text();
+    
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      const jsonMatch = text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        return JSON.parse(jsonMatch[0]);
+      }
+      throw new Error("Could not parse AI response");
     }
-    throw new Error("Could not parse AI response");
+  } catch (error) {
+    console.error("Error during AI analysis:", error);
+    throw new Error("Failed to analyze business lead");
   }
 }
