@@ -28,13 +28,13 @@ export function VoiceQualificationDiscussion({ results }: VoiceQualificationDisc
         language: "en",
       },
       tts: {
-        voiceId: "QYmulHXHr8imt56OqKpj", // Updated voice ID
+        voiceId: "EXAVITQu4vr4xnSDxMaL", // Updated voice ID back to Sarah's voice
         model: "eleven_turbo_v2" // Using the Turbo v2 model for faster responses
       }
     },
     onConnect: () => {
       console.log("Connected to ElevenLabs with settings:", {
-        voiceId: "QYmulHXHr8imt56OqKpj",
+        voiceId: "EXAVITQu4vr4xnSDxMaL",
         model: "eleven_turbo_v2"
       });
       setIsListening(true);
