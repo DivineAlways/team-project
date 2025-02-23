@@ -1,4 +1,3 @@
-
 export const TOP_INDUSTRIES = [
   "Technology & Software",
   "Retail & E-commerce", 

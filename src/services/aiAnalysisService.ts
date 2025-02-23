@@ -1,4 +1,3 @@
-
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { BusinessFormData } from "@/constants/businessFormConstants";
 import { supabase } from "@/integrations/supabase/client";
@@ -18,7 +17,7 @@ export async function analyzeBusinessLead(data: BusinessFormData) {
     .single();
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "5V3UCGiQ1CiIhAzzGM5h" });
 
   const prompt = `As an expert business analyst, analyze this lead in the context of the qualifying business.
 
