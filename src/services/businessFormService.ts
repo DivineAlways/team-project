@@ -1,4 +1,3 @@
-
 import { supabase } from "@/integrations/supabase/client";
 import { BusinessFormData } from "@/constants/businessFormConstants";
 import { analyzeBusinessLead } from "./aiAnalysisService";
