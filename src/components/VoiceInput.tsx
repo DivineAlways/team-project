@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
@@ -17,7 +16,7 @@ export function VoiceInput({ onFieldUpdate }: VoiceInputProps) {
       // Request microphone permission
       await navigator.mediaDevices.getUserMedia({ audio: true });
       
-      const recognition = new (window.webkitSpeechRecognition)();
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
       recognition.continuous = false; // Only listen once
       recognition.interimResults = false; // Only get final results
       
@@ -39,11 +38,19 @@ export function VoiceInput({ onFieldUpdate }: VoiceInputProps) {
 
       recognition.onerror = (event: any) => {
         console.error("Speech recognition error:", event.error);
-        toast({
-          title: "Error",
-          description: "There was an error with the voice input. Please try again.",
-          variant: "destructive",
-        });
+        if (event.error === 'network') {
+          toast({
+            title: "Network Error",
+            description: "There was a network issue while trying to access speech recognition. Please check your internet connection.",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Speech Recognition Error",
+            description: "There was an error with the voice input. Please try again.",
+            variant: "destructive",
+          });
+        }
         setIsListening(false);
       };
 
