@@ -3,9 +3,9 @@ import { BusinessFormData } from "@/constants/businessFormConstants";
 import { supabase } from "@/integrations/supabase/client";
 
 export async function analyzeBusinessLead(data: BusinessFormData) {
-  const apiKey = localStorage.getItem('gemini_api_key');
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY; // Read from environment variable
   if (!apiKey) {
-    throw new Error("Gemini API key not found");
+    throw new Error("Google Generative AI API key not found");
   }
 
   // Get the user's business profile
